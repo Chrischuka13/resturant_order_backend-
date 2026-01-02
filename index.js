@@ -9,6 +9,10 @@ const order = require('./routes/orderRoute')
 app.use(express.json())
 app.use('/api/orders', order)
 
+app.get('/', (req, res)=>{
+    res.send('Server running')
+})
+
 const startServer = async () => {
     try {
         await mongoose.connect(process.env.MONGO_URI)
