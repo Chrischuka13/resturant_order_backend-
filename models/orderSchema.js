@@ -16,12 +16,7 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    phone: {
-        type: String,
-        required: true,
-        min: 11,
-        max: 11
-    },
+
 }, 
     ],
 
