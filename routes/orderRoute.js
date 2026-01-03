@@ -5,7 +5,7 @@ const router = express.Router()
 
 router.post("/", async (req, res) => {
     try {
-    const { cartItems, phone } = req.body;
+    const { cartItems } = req.body;
 
     // Validate items
     if (!cartItems || !Array.isArray(cartItems) || cartItems.length === 0) {
@@ -37,7 +37,6 @@ router.post("/", async (req, res) => {
     // Tell Server to create order
     const order = await Order.create({
       cartItems,
-      phone,
       totalAmount,
     });
 
