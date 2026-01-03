@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const orderSchema = new mongoose.Schema({
-    items: [
+    cartItems: [
 {
     name: {
         type: String,
@@ -16,15 +16,16 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+
+}, 
+    ],
+    
     phone: {
         type: String,
         required: true,
         min: 11,
         max: 11
     },
-}, 
-    ],
-
     totalAmount: {
         type: Number,
         required: true

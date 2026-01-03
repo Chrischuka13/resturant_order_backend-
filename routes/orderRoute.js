@@ -5,17 +5,17 @@ const router = express.Router()
 
 router.post("/", async (req, res) => {
     try {
-    const { items } = req.body;
+    const { cartItems, phone } = req.body;
 
     // Validate items
-    if (!items || !Array.isArray(items) || items.length === 0) {
+    if (!cartItems || !Array.isArray(cartItems) || cartItems.length === 0) {
       return res.status(400).json({
         message: "Cart is empty",
       });
     }
 
     // Validate each item
-    for (const item of items) {
+    for (const item of cartItems) {
       if (
         !item.name ||
         typeof item.price !== "number" ||
@@ -36,7 +36,8 @@ router.post("/", async (req, res) => {
 
     // Tell Server to create order
     const order = await Order.create({
-      items,
+      cartItems,
+      phone,
       totalAmount,
     });
 
